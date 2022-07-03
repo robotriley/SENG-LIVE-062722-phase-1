@@ -41,7 +41,7 @@ header div h2{
 }
 
 footer{
-    display: flex;
+    /* display: flex; */
 }
 
 footer div p{
