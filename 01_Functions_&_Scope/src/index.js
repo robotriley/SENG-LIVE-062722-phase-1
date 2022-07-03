@@ -1,17 +1,16 @@
 //Data 
 const inventory = [
         {
-            id:1,
+            id: 1,
             title: 'Eloquent JavaScript: A Modern Introduction to Programming',
             author: 'Marjin Haverbeke',
             price: 10.00,
             reviews: [{userID: 1, content:'Good book, but not great for new coders'}],
             inventory: 10,
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IKycqTPUL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-            
         },
         {
-            id:2,
+            id: 2,
             title: 'JavaScript & JQuery: Interactive Front-End Web Development',
             author: 'Jon Duckett',
             price: 45.75,
@@ -20,7 +19,7 @@ const inventory = [
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/31SRWF+LkKL._SX398_BO1,204,203,200_.jpg'
         },
         {
-            id:3,
+            id: 3,
             title: 'JavaScript: The Good Parts',
             author: 'Douglas Crockford',
             price: 36.00,
@@ -29,17 +28,16 @@ const inventory = [
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
         },
         {
-            id:4,
+            id: 4,
             title: 'JavaScript: The Definitive Guide',
             author: 'David Flanagan',
             price: 25.50,
             reviews: [{userID: 44, content:'Great intro to js book'}, {userID: 350, content:'It really is the Definitive guide'}],
             inventory: 0,
-            imageUrl: "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg"
-            
+            imageUrl: "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg" 
         },
         {
-            id:5,
+            id: 5,
             title: 'You Don’t Know JS',
             author: 'Kyle Simpson',
             price: 6.00,
@@ -48,17 +46,16 @@ const inventory = [
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41T5H8u7fUL._SX331_BO1,204,203,200_.jpg'
         }, 
         {
-            id:6,
+            id: 6,
             title: 'Learn Enough JavaScript to Be Dangerous',
             author: 'Michael Hartl',
             price: 24.00,
             reviews: [{userID: 50, content:'pretty good'}],
             inventory: 5,
             imageUrl: 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQyf6xSyTHc7a8mx17ikh6GeTohc88Hn0UgkN-RNF-h4iOwVlkW'
-
         },
         {
-            id:7,
+            id: 7,
             title: 'Cracking the Coding Interview',
             author: 'Gayle Laakmann McDowell',
             price: 49.95,
@@ -68,3 +65,76 @@ const inventory = [
 
         }
     ]
+    // array[0]
+    //  array.map(item => console.log(item.title))
+    // console.log(inventory[0].title)
+
+    // Function Declaration (Declaring / Defining)
+    // sentence => parameter
+    // function someFunction(sentence) {
+    //     console.log(sentence);
+    // }
+
+
+    // Function Invocation (Invocation / Calling)
+    //  "Hello, world" => Argument
+    // someFunction("hello, world");
+
+    // function outputPrice(book) {
+    //     console.log(`$${book.price.toFixed(2)}`)
+    // }
+    
+    // const outputPrice = book => console.log(`$${book.price.toFixed(2)}`)
+    
+    // outputPrice(inventory[0]);
+
+// function outputDiscount (book, discount) {
+//     return book.price / discount
+// }
+
+// const outputDiscount = (book, discount) => (book.price / discount).toFixed(2);
+
+//     console.log(outputDiscount (inventory[0], 2))
+
+function buildBook (title, price, author, imageUrl) {
+    const bookObj = {}
+    // set book title
+    bookObj.title = title
+    // bookObj = {
+    // title = "newTitle"
+    // }
+    // set book price
+    bookObj.price = price
+    // set book author
+    bookObj.author = author
+    // set book imageUrl
+    if (!imageUrl) {
+
+    bookObj.imageUrl = "/default_img.img"
+      // console.log ('NO IMAGE')
+    } else {
+        bookObj.imageUrl = imageUrl
+    }
+    return bookObj
+ }
+
+let newBook = buildBook("Sample Title", 10, "Sample Author", false);
+
+ inventory.push(newBook);
+
+//  console.log(inventory);
+
+//  callback function
+ function pullTitle(book) {
+    return book.title;
+ }
+
+ const mapOverBooks = (inventory, callback) => {
+    const bookTitles = [];
+    for(let book of inventory) {
+        bookTitles.push(callback(book))
+    }
+     return bookTitles;
+}
+
+console.log(mapOverBooks(inventory, pullTitle))
